@@ -145,6 +145,7 @@ public class HandTracking : MonoBehaviour
                 //TickMeter tm = new TickMeter();
                 //tm.start();
                 List<Mat> outs = new List<Mat>();
+                //weight파일을 로드한 딥러닝 네트워크를 진행시키고 추출한 결과Mat들을 반환함
                 net.forward(outs, outBlobNames);
                 //tm.stop();
                 //Debug.Log ("Inference time, ms: " + tm.getTimeMilli ());
