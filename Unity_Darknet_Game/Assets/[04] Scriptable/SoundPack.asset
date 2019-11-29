@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a3193662219e2147b79665fe764cb1e, type: 3}
+  m_Name: SoundPack
+  m_EditorClassIdentifier: 
+  weapons:
+  - {fileID: 8300000, guid: c791c469e6600d7469f942f127e22088, type: 3}
+  - {fileID: 8300000, guid: 72d606ae97365c64296f434d4afd0d96, type: 3}
+  - {fileID: 8300000, guid: a34e0ea5d874ef746a180da4e5d1664d, type: 3}
+  thrusts:
+  - {fileID: 8300000, guid: 821067bfe9c48db4d96569ac6312daa4, type: 3}
+  - {fileID: 8300000, guid: cbc6e614dc3829742ab9a0ec85d071af, type: 3}
+  - {fileID: 8300000, guid: a95903d86568dd14d8750f5d47e71202, type: 3}
+  desroy: {fileID: 8300000, guid: 6b791515e321c9a45be686b4783e8cc4, type: 3}
+  collisions:
+  - {fileID: 8300000, guid: a804e028289ffc1479357c93a4d3e0e7, type: 3}
+  - {fileID: 8300000, guid: cb0916c0747d0c748bee228b0f66b26b, type: 3}
+  - {fileID: 8300000, guid: 406db9800674f8e469505adb79f0bc8b, type: 3}
+  enemyHit:
+  - {fileID: 8300000, guid: 01cec379694ab7a4fb91ebb6a45d5526, type: 3}
+  - {fileID: 8300000, guid: c9832f4e79d94c844af33a8fadc726aa, type: 3}
