@@ -85,10 +85,11 @@ public class HandTracking : MonoBehaviour
         //config_filepath = Utils.getFilePath("dnn/" + config);
         //model_filepath = Utils.getFilePath("dnn/" + model);
 
+        //2020 08 11 수정됨
         //빌드하면 경로 바뀔 수 있음
-        classes_filepath = classes;
-        config_filepath = config;
-        model_filepath = model;
+        classes_filepath = Application.streamingAssetsPath + "/" + classes;ㅡㄴ데
+        config_filepath = Application.streamingAssetsPath + "/" + config;
+        model_filepath = Application.streamingAssetsPath + "/" + model;
         Run();
 #endif
     }
@@ -213,7 +214,9 @@ public class HandTracking : MonoBehaviour
 
         List<int> classIdsList = new List<int>();
         List<float> confidencesList = new List<float>();
-        List<OpenCVForUnity.CoreModule.Rect> boxesList = new List<OpenCVForUnity.CoreModule.Rect>();
+        //2020 08 11 수정됨
+        //List<OpenCVForUnity.CoreModule.Rect> boxesList = new List<OpenCVForUnity.CoreModule.Rect>();
+        List<Rect2d> boxesList = new List<Rect2d>();
         if (net.getLayer(new DictValue(0)).outputNameToIndex("im_info") != -1)
         {  // Faster-RCNN or R-FCN
            // Network produces output blob with a shape 1x1xNx7 where N is a number of
@@ -251,7 +254,9 @@ public class HandTracking : MonoBehaviour
 
                         classIdsList.Add((int)(class_id) - 0);
                         confidencesList.Add((float)confidence);
-                        boxesList.Add(new OpenCVForUnity.CoreModule.Rect(left, top, width, height));
+                        //2020 08 11 수정됨
+                        //boxesList.Add(new OpenCVForUnity.CoreModule.Rect(left, top, width, height));
+                        boxesList.Add(new Rect2d(left, top, width, height));
                     }
                 }
             }
@@ -293,7 +298,9 @@ public class HandTracking : MonoBehaviour
 
                         classIdsList.Add((int)(class_id) - 0);
                         confidencesList.Add((float)confidence);
-                        boxesList.Add(new OpenCVForUnity.CoreModule.Rect(left, top, width, height));
+                        //2020 08 11 수정됨
+                        //boxesList.Add(new OpenCVForUnity.CoreModule.Rect(left, top, width, height));
+                        boxesList.Add(new Rect2d(left, top, width, height));
                     }
                 }
             }
@@ -335,8 +342,9 @@ public class HandTracking : MonoBehaviour
 
                         classIdsList.Add(maxIdx);
                         confidencesList.Add((float)confidence);
-                        boxesList.Add(new OpenCVForUnity.CoreModule.Rect(left, top, width, height));
-
+                        //2020 08 11 수정됨
+                        //boxesList.Add(new OpenCVForUnity.CoreModule.Rect(left, top, width, height));
+                        boxesList.Add(new Rect2d(left, top, width, height));
                     }
                 }
             }
@@ -347,7 +355,7 @@ public class HandTracking : MonoBehaviour
         }
 
 
-        MatOfRect boxes = new MatOfRect();
+        MatOfRect2d boxes = new MatOfRect2d();
         boxes.fromList(boxesList);
 
         MatOfFloat confidences = new MatOfFloat();
@@ -364,7 +372,10 @@ public class HandTracking : MonoBehaviour
         for (int i = 0; i < indices.total(); ++i)
         {
             int idx = (int)indices.get(i, 0)[0];
-            OpenCVForUnity.CoreModule.Rect box = boxesList[idx];
+            //2020 08 11 수정됨
+            //OpenCVForUnity.CoreModule.Rect box = boxesList[idx];
+            Rect2d box = boxesList[idx];
+
             OnGestureChange?.Invoke(classIdsList[idx]);
             //drawPred(classIdsList[idx], confidencesList[idx], box.x, box.y,
             //box.x + box.width, box.y + box.height, frame);
